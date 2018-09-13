@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= yield :title %> Memory </title>
+    <%= yield :meta %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="h-100" data-turbolinks="false">
+    <div class="dashboard d-flex h-100">
+      <%= render "shared/administrator" %>
+      <div class="main-content">
+        <!-- <%= render "shared/flash" %> -->
+        <%= yield %>
+      </div>
+  </div>
+  </body>
+</html>
