@@ -5,14 +5,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super do |user|
+      user.email = params[:email] if params[:email].present?
+    end
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |user|
+      if user.persisted?
+        flash[:event] = 'sign up'
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -25,9 +31,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    flash[:user_id] = resource.id # Set user id for analytic events
+
+    super do |user|
+      flash[:event] = 'account deletion' if user.destroyed?
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -51,9 +61,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    root_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

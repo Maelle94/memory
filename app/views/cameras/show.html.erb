@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @camera.name %>
+</p>
+
+<p>
+  <strong>Number bands:</strong>
+  <%= @camera.number_bands %>
+</p>
+
+<p>
+  <strong>Number channels:</strong>
+  <%= @camera.number_channels %>
+</p>
+
+<p>
+  <strong>Wave length:</strong>
+  <%= @camera.wave_length %>
+</p>
+
+<p>
+  <strong>Dimension:</strong>
+  <%= @camera.dimension %>
+</p>
+
+<p>
+  <strong>Bandwidth:</strong>
+  <%= @camera.bandwidth %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @camera.year %>
+</p>
+
+<%= link_to 'Edit', edit_camera_path(@camera) %> |
+<%= link_to 'Back', cameras_path %>

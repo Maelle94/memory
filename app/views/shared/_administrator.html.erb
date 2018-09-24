@@ -1,0 +1,18 @@
+<div class="d-flex flex-column admin-sidebar position-fixed h-100">
+  <p class="pl-2 mt-3 font-weight-bold"><a href="<%= root_path %>"><%= current_user.username %></a></p>
+  <h6 class="flex-row mt-4 pl-4">
+    <a href="<%= categories_path %>"><i class="fa fa-user-plus pr-2" aria-hidden="true"></i>Catégories</a>
+  </h6>
+  <ul class="add-image flex-row mt-4 mb-0 pl-4">
+    <li class="d-block mr-3">
+      <a href="<%= cameras_path %>">Caméras</a>
+      <a href="<%= new_camera_path %>"><i class="fa fa-plus mt-2 float-right font-weight-bold"></i></a>
+    </li>
+  </ul>
+  <ul class="add-image flex-row mb-0 pl-4">
+    <li class="d-block mr-3">
+      <a href="<%= images_path %>">Images</a>
+      <a href="<%= new_image_path %>"><i class="fa fa-plus mt-2 float-right font-weight-bold"></i></a>
+    </li>
+  </ul>
+</div>

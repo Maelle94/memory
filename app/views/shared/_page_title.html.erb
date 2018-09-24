@@ -1,0 +1,6 @@
+<% if content_for?(:title) %>
+  <div class="row page-title mt-4  text-center">
+    <h3 class="col-12 m-0"><%= yield :title %></h3>
+    <div class="col-12 text-right pr-0"><%= yield :filters %></div>
+  </div>
+<% end %>

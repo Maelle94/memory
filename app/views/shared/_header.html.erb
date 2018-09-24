@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="<%= root_path %>">
+     <img class="logo-sewema pl-2" src="<%= asset_path 'logo.jpg' %>" alt="img-fluid">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <% if current_user.author? %>
+            <li class="nav-item active">
+              <%= link_to 'Auteur', dashboard_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item active">
+              <%= link_to 'Mes publications', root_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span><%= current_user.username %></span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <%= link_to('Modifier Profil', root_path, :id => '', class: "dropdown-item")%>
+                <%= link_to('Se déconnecter', destroy_user_session_path, :method => :delete, :id => 'logout', class: "dropdown-item")%>
+              </div>
+           </li>
+           <li>
+             <img class="gravatar mt-1 ml-3" src="<%= asset_path 'blank-profile.png' %>" alt="profil">
+           </li>
+         <% else %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span><%= current_user.username %></span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	              <%= link_to('Modifier Profil', root_path, :id => '', class: "dropdown-item")%>
+                <%= link_to('Se déconnecter', destroy_user_session_path, :method => :delete, :id => 'logout', class: "dropdown-item")%>
+              </div>
+            </li>
+            <li>
+              <img class="gravatar mt-1 m;-3" src="<%= asset_path 'blank-profile.png' %>" alt="profil">
+            </li>
+          <% end %>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to 'Connexion', new_user_session_path, class: "nav-link"%>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

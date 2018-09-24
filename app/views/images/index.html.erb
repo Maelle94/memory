@@ -1,0 +1,39 @@
+<% content_for :title do %>
+  Images
+<% end %>
+
+<div class="dashboard-content py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Number bands</th>
+              <th scope="col">Spectrum</th>
+              <th scope="col">Bandwidth</th>
+              <th scope="col">Year</th>
+              <th scope="col" colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @images.each do |image| %>
+              <tr>
+                <td><%= image.name %></td>
+                <td><%= image.number_bands %></td>
+                <td><%= image.spectrum %></td>
+                <td><%= image.bandwidth %></td>
+                <td><%= image.year %></td>
+                <td><%= link_to 'Show', image %></td>
+                <td><%= link_to 'Edit', edit_image_path(image) %></td>
+                <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

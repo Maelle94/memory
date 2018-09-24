@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @image.name %>
+</p>
+
+<p>
+  <strong>Number bands:</strong>
+  <%= @image.number_bands %>
+</p>
+
+<p>
+  <strong>Spectrum:</strong>
+  <%= @image.spectrum %>
+</p>
+
+<p>
+  <strong>Bandwidth:</strong>
+  <%= @image.bandwidth %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @image.year %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @image.description %>
+</p>
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

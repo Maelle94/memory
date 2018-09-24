@@ -13,15 +13,21 @@ gem 'coffee-rails', '4.2.2'
 
 gem 'devise'
 
+gem 'font-awesome-sass', '~> 5.3.1'
+
 gem 'jbuilder',     '2.7.0'
 
 gem 'jquery-rails', '4.3.1'
+
+gem 'mini_magick'
 
 gem 'pg', '~> 0.21.0'
 
 gem 'puma',         '3.9.1'
 
 gem 'rails',        '5.2'
+
+gem 'rails_admin', '~> 1.3'
 
 gem 'sass-rails',   '5.0.6'
 

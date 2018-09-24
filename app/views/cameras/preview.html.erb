@@ -1,0 +1,63 @@
+<%= render "shared/header" %>
+<div class="view-courses-publish pt-5">
+  <div class="container">
+    <div class="row mx-auto py-2 pl-4">
+      <div class="d-flex bd-highlight w-100">
+        <div class="row mr-auto mb-3 bd-highlight">
+          <div class="form-group mx-2">
+            <div class="dropdown filters">
+              <label for="dropdownMenuLink" class="pl-3"> Catégories </label>
+              <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Tout
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item options-filters" href="<%= preview_cameras_path %>"><h6>Tout</h6></a>
+                <% @categories.each do |category| %>
+                  <%= link_to preview_cameras_path(category: "#{category.name}"), class: "dropdown-item options-filters" do %>
+                    <h6> <%= category.name %> </h6>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 bd-highlight">
+          <%= form_tag preview_cameras_path, :method => 'get', class: "form-inline search-form" do %>
+            <div class="col-auto">
+              <div class="input-group search-course">
+                <%= text_field_tag :keywords, params[:keywords], class: "form-control keywords", placeholder: "Rechercher une image..." %>
+                <div class="input-group-append btn-keywords">
+                  <button class="btn btn-search" type="button"><i class="fa fa-search form-control-feedback"></i></button>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+      <div class="row mx-auto">
+        <% @camera.images.each do |image| %>
+          <div class="col-12 col-sm-6 col-md-4 course-card">
+            <div class="course-listing mb-5">
+              <a href="<%= preview_cameras_path %>">
+                <div class="course-card-content col-md-12">
+                  <div class="course-box-image">
+                   <% if image.avatar.attached? %>
+                     <%= image_tag image.avatar.variant(resize: "400x400"), :class => "w-100 image-fluid course-image-card", :alt => "pas de photo"%>
+                   <% else %>
+                     <img class="w-100 image-fluid course-image-card" src="<%= asset_path 'default-camera-picture.png' %>" alt="pas de photo">
+                   <% end %>
+                 </div>
+                  <div class="course-listing-content pt-3">
+                    <a class="card-title text-center course-listing-title"><%= image.name %></a>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>

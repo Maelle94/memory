@@ -1,0 +1,128 @@
+<%= form_with(model: image, local: true) do |form| %>
+  <% if image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+      <% image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label :name, class: "col-sm-3 col-form-label" %>
+        <%= form.text_field :name, class: "form-control col-sm-9" %>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label :category_id, 'Catégorie', class: "col-sm-3 col-form-label" %>
+        <%= form.collection_select :category_id, Category.all , :id , :name , {}, {class: "form-control col-sm-9 w-100"} %>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label :camera_id, 'Caméra', class: "col-sm-3 col-form-label" %>
+        <%= form.collection_select :camera_id, Camera.all , :id , :name , {}, {class: "form-control col-sm-9 w-100"} %>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label :number_bands, class: "col-sm-3 col-form-label" %>
+        <%= form.text_field :number_bands, class: "form-control col-sm-9" %>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label :spectrum, class: "col-sm-3 col-form-label" %>
+        <%= form.text_field :spectrum, class: "form-control col-sm-9" %>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label :bandwidth, class: "col-sm-3 col-form-label" %>
+        <%= form.text_field :bandwidth, class: "form-control col-sm-9" %>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label :year, class: "col-sm-3 col-form-label" %>
+        <%= form.number_field :year, class: "form-control col-sm-9", in: 1.0..20.0, step: 0.5 %>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label :amount, class: "col-sm-3 col-form-label" %>
+        <%= form.text_field :amount, class: "form-control col-sm-9" %>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label :description, class: "col-sm-3 col-form-label" %>
+        <div class="col-sm-9">
+          <%= form.text_field :description, class: "form-control", id: 'description-image' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label 'Image', class: "col-sm-3 col-form-label" %>
+        <div class="col-sm-6">
+          <div class="card w-100">
+            <div class="card-body">
+              <% if image.avatar.attached? %>
+                <%= image_tag avatar.variant(resize: "400x400"), class: 'img-fluid image-pic', alt: 'pas de photo' %>
+              <% else %>
+                <img src="<%= asset_path 'default-camera-picture.png' %>" alt="background" class="image-pic img-fluid">
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 form-group">
+          <label for="image_picture" class="w-100"><span class="btn btn-block btn-outline-success">Image</span></label>
+          <%= form.file_field :avatar , class: 'img-picture inputfile' , id: 'image_picture' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto mb-3">
+      <div class="form-group row">
+        <%= form.label 'Image', class: "col-sm-3 col-form-label" %>
+        <div class="col-sm-6">
+          <div class="card w-100">
+            <div class="card-body">
+              <% if image.multi_images.attached? %>
+                <%= image_tag multi_images.variant(resize: "400x400"), class: 'img-fluid multi-image-pic', alt: 'pas de photo' %>
+              <% else %>
+                <img src="<%= asset_path 'default-camera-picture.png' %>" alt="background" class="multi-image-pic img-fluid">
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 form-group">
+          <label for="multi_image_picture" class="w-100"><span class="btn btn-block btn-outline-success">Images filtrées</span></label>
+          <%= form.file_field :multi_images , multiple: true, class: 'multi-img-picture inputfile' , id: 'multi_image_picture' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 mx-auto">
+      <div class="form-group row">
+        <%= form.submit 'Enrégistrer', class: 'col-sm-9 ml-auto btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<% content_for :title do %>
+  Catégories
+<% end %>
+
+<div class="dashboard-content py-5">
+  <div class="container">
+    <%= render 'form', category: @category %>
+    <div class="row mt-5">
+      <div class="col-md-8 mx-auto">
+        <table class="w-100">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @categories.each do |category| %>
+              <tr>
+                <td><%= category.name %></td>
+                <td></td>
+                <td>
+                  <%= link_to category_path(category), method: :delete, class: "ml-2 btn-xs btn-outline-danger float-right",  title: 'Supprimer Catégorie', data: {confirm: 'Êtes-vous sûre?', toggle: 'tooltip', placement: 'bottom'} do %>
+                    <i class="fa fa-trash"></i>
+                  <% end %>
+                  <%= link_to edit_category_path(category), class: "btn-xs btn-outline-secondary float-right" , title: 'Modifier Catégorie', data: {toggle: 'tooltip', placement: 'bottom'} do %>
+                    <i class="fa fa-edit"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

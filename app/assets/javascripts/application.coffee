@@ -15,3 +15,5 @@
 #= require bootstrap-sprockets
 #= require rails-ujs
 #= require turbolinks
+#= require quill/dist/quill
+#= require_tree ./application

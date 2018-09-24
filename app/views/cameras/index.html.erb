@@ -1,0 +1,43 @@
+<% content_for :title do %>
+  Caméras
+<% end %>
+
+<div class="dashboard-content py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Number bands</th>
+              <th scope="col">Number channels</th>
+              <th scope="col">Wave length</th>
+              <th scope="col">Dimension</th>
+              <th scope="col">Bandwidth</th>
+              <th scope="col">Year</th>
+              <th scope="col" colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @cameras.each do |camera| %>
+              <tr>
+                <td><%= camera.name %></td>
+                <td><%= camera.number_bands %></td>
+                <td><%= camera.number_channels %></td>
+                <td><%= camera.wave_length %></td>
+                <td><%= camera.dimension %></td>
+                <td><%= camera.bandwidth %></td>
+                <td><%= camera.year %></td>
+                <td><%= link_to 'Show', camera %></td>
+                <td><%= link_to 'Edit', edit_camera_path(camera) %></td>
+                <td><%= link_to 'Destroy', camera, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

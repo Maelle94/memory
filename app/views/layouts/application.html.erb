@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= yield :title %> Memory </title>
+    <title><%= yield :title %> Database </title>
     <%= yield :meta %>
     <%= csrf_meta_tags %>
 
@@ -12,12 +12,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
 
-  <body class="w-100 body <%= controller_name %> <%= controller_name %>-<%= action_name %>"  data-turbolinks="false">
+  <body class="w-100 h-100 body <%= controller_name %> <%= controller_name %>-<%= action_name %>"  data-turbolinks="false">
     <%= render "shared/page_title" %>
-    <div class="wrapper mt-4">
-      <div class="container-fluid">
-        <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
   </body>
 </html>

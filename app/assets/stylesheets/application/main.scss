@@ -1,0 +1,126 @@
+html{
+  height: 100%;
+}
+
+body{
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: $sewema-color;
+  &:hover {
+    text-decoration: none;
+    color: darken($sewema-color, 5%);
+  }
+}
+
+.homepage {
+  background-image: url("homepage.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+.navbar-fixed-top.fixed-top{
+  background-color: $white;
+  box-shadow: 5px 5px 25px 0 $course-listing-shadow;
+}
+
+.navbar {
+  background-color: $white-navbar;
+  font-size: 15px;
+  padding: 1rem 1rem;
+
+  .navbar-brand img {
+    height: 30px;
+  }
+  .navbar-nav .nav-link , .navbar-nav .active > .nav-link {
+    color: $btn-color-blue;
+    font-weight: bold;
+    &:hover {
+     color: $fa-gray-color;
+    }
+  }
+}
+
+.headline {
+   padding-top: 200px;
+   padding-left: 1.5%;
+   h1 {
+      color: $headline-color;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 44px;
+    }
+
+   h2 {
+      color: $headline-color;
+      font-size: 23px;
+      font-weight: 300;
+      line-height: 32px;
+      margin-top: 20px;
+      max-width: 700px;
+    }
+}
+
+.admin-sidebar {
+  background-color: $blue-sidebar-color;
+  width: 225px;
+
+  i {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: 300;
+
+    a {
+      color: $white;
+    }
+  }
+
+  h6, ul {
+    color: $gray-sidebar-color;
+    font-size: 15px;
+    a {
+      color: $white;
+      font-size: 16px;
+      font-weight: 500;
+      &:hover {
+        color: $liste-sidebar-color;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .add-image {
+    border-top: 0.1px solid $white;
+    padding: 17px;
+  }
+}
+
+.main-content {
+  width: calc(100% - 225px);
+
+  .nav-dashboard {
+    border-bottom: 1.5px solid $border-navbar;
+    color: $btn-color-blue;
+    min-height: 57px;
+    padding: 18px;
+  }
+}
+
+.inputfile {
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: .1px;
+  z-index: -1;
+}
