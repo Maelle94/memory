@@ -33,6 +33,8 @@ gem 'sass-rails',   '5.0.6'
 
 gem 'sidekiq'
 
+gem 'stripe'
+
 gem 'turbolinks',   '5.0.1'
 
 gem 'uglifier',     '3.2.0'
