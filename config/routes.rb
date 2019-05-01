@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
-  resources :images
+  resources :charges
+  resources :images do
+    collection do
+      get ':id/preview', to: 'images#preview', as: 'preview'
+    end
+  end
+  
   resources :cameras do
     collection do
       get ':id/preview', to: 'cameras#preview', as: 'preview'
     end
   end
+
   resources :categories
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {

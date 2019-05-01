@@ -1,46 +1,39 @@
 window.addEventListener 'DOMContentLoaded', () ->
-  editor = document.querySelector('#description-image')
-  if editor
-    # console.log 'editor', editor.dataset.camera
-    # content = document.querySelector(editor.dataset.camera)
+  description = document.querySelector('#description-image')
 
-    toolbarOptions = [
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      ['bold', 'italic', 'underline'],
-      ['blockquote', 'code-block'],
-      [{ 'font': [] }],
-      [{ 'indent': '-1'}, { 'indent': '+1' }],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'align': [] }],
-      [{ 'color': [] }, { 'background': [] }]
-    ]
+  toolbarOptions = [
+    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    ['bold', 'italic', 'underline'],
+    ['blockquote', 'code-block'],
+    [{ 'font': [] }],
+    [{ 'indent': '-1'}, { 'indent': '+1' }],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    [{ 'align': [] }],
+    [{ 'color': [] }, { 'background': [] }]
+  ]
+
+  if description
+
+    content = document.querySelector(description.dataset.description)
+    console.log 'content', content
+
     quill = new Quill '#description-image',
       modules:
         toolbar: toolbarOptions
       theme: 'snow'
+    console.log 'quill', quill
 
-    # quill.on 'text-change', ->
-    #   content.value = quill.root.innerHTML
-    #   $('.editor-text-value').attr('value', content.value)
+    quill.on 'text-change', ->
+      console.log 'text change'
+      content.value = quill.root.innerHTML
 
-    $('.img-picture').on 'change', ->
-      previewPicture = ->
-        preview = document.querySelector('.image-pic')
-        file = document.querySelector('.img-picture').files[0]
-        reader = new FileReader
-        reader.addEventListener 'load', () ->
-          preview.src = reader.result
-        if file
-          reader.readAsDataURL file
-      previewPicture()
-
-      # $('.multi-img-picture').on 'change', ->
-      #   previewPicture = ->
-      #     preview = document.querySelector('.multi-image-pic')
-      #     file = document.querySelector('.multi-img-picture').files[0]
-      #     reader = new FileReader
-      #     reader.addEventListener 'load', () ->
-      #       preview.src = reader.result
-      #     if file
-      #       reader.readAsDataURL file
-      #   previewPicture()
+  $('.img-picture').on 'change', ->
+    previewPicture = ->
+      preview = document.querySelector('.image-pic')
+      file = document.querySelector('.img-picture').files[0]
+      reader = new FileReader
+      reader.addEventListener 'load', () ->
+        preview.src = reader.result
+      if file
+        reader.readAsDataURL file
+    previewPicture()

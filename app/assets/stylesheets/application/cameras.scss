@@ -5,3 +5,34 @@
 .ql-snow {
   width: 100%;
 }
+
+.course-card {
+  a {
+    color: $color-chapter-title;
+    text-decoration: none;
+
+    &:hover {
+      color: $hover-color-chapter-title;
+    }
+  }
+  .course-listing {
+    background-color: $white;
+    border-radius: 9px;
+    box-shadow: 5px 5px 25px 0 $course-listing-shadow;
+    min-height: 320px;
+     &:hover {
+      box-shadow: none;
+      transition: all linear 0.1s;
+      border: 1px solid $course-listing-shadow;
+    }
+  }
+}
+
+// .course-card-content {
+//   box-shadow: 5px 5px 25px 0 $course-listing-shadow;
+//   &:hover {
+//     box-shadow: none;
+//     transition: all linear 0.1s;
+//     border: 1px solid $course-listing-shadow;
+//   }
+// }

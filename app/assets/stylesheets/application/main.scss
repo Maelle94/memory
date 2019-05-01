@@ -18,9 +18,10 @@ a {
 }
 
 .homepage {
-  background-image: url("homepage.jpg");
+  background-image: url("homepage.png");
   background-position: center center;
   background-size: cover;
+  min-height: 350px
 }
 .navbar-fixed-top.fixed-top{
   background-color: $white;
@@ -45,17 +46,17 @@ a {
 }
 
 .headline {
-   padding-top: 200px;
+   padding-top: 75px;
    padding-left: 1.5%;
    h1 {
-      color: $headline-color;
+      color: white;
       font-size: 24px;
       font-weight: 700;
       line-height: 44px;
     }
 
    h2 {
-      color: $headline-color;
+      color: white;
       font-size: 23px;
       font-weight: 300;
       line-height: 32px;
@@ -107,6 +108,7 @@ a {
 
 .main-content {
   width: calc(100% - 225px);
+  color: $black;
 
   .nav-dashboard {
     border-bottom: 1.5px solid $border-navbar;
@@ -123,4 +125,25 @@ a {
   position: absolute;
   width: .1px;
   z-index: -1;
+}
+
+.navbar .user-profil-photo {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+.course-box-image{
+  max-height: 208px;
+  .course-image-card {
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    height: 190px;
+  }
+}
+
+.course-listing-title {
+  font-size: 20px;
+  font-weight: normal;
+  padding: 16px 16px 4px 16px;
 }

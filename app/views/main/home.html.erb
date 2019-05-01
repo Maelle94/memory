@@ -1,10 +1,9 @@
-<div class="homepage h-100">
+<div class="homepage">
+  <%= render "shared/header" %>
   <div class="main-content align-self-stretch d-flex w-100">
     <div class="container">
       <div class="headline">
         <h1>Boostez vos compétences. Propulsez votre entreprise.</h1>
-        <h2>Des cours complets qui vous aident à acquérir les connaissances nécessaires pour
-          manier efficacement les outils du numérique et réussir en tant qu’entrepreneur.</h2>
         <%= link_to 'Inscrivez-vous', new_user_registration_path, class: "btn btn-lg"%>
       </div>
     </div>
@@ -12,7 +11,7 @@
 </div>
 
 <div class="container">
-  <p class="text-center my-5 title-course"> Cours disponibles </p>
+  <h2 class="text-center my-5 title-course"> Caméras </h2>
   <div class="row mx-auto">
     <% Camera.first(3).each do |camera| %>
     <div class="col-xs-12 col-sm-6 col-md-4 course-card">
@@ -27,7 +26,7 @@
              <% end %>
            </div>
             <div class="course-listing-content pt-3">
-              <a class="card-title text-center course-listing-title"><%= camera.name %></a>
+              <a class="card-title text-center course-listing-title mb-3"><%= camera.name %></a>
             </div>
           </div>
         </a>
@@ -36,11 +35,11 @@
     <% end %>
   </div>
   <div class="row">
-    <%= link_to 'Voir tous les cameras', root_path, class: "btn-primary btn-lg mx-auto"%>
+    <%= link_to 'Voir tous les cameras', root_path, class: "btn-primary btn-lg mx-auto mb-5"%>
   </div>
 </div>
 
-<div class="footer container">
+<div class="footer container mt-5">
   <div class="row">
     <div class="col-md-4 col-xs-12 col-sm-4">
       <p><i class="fa fa-copyright" aria-hidden="true"></i>Sewema</p>

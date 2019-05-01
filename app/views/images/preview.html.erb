@@ -1,0 +1,19 @@
+<%= render "shared/header" %>
+<div class="view-courses-publish pt-5">
+  <div class="container">
+    <div class="row mx-auto">
+      <% @image.multi_images.each do |image| %>
+        <div class="col-12 col-sm-6 col-md-2 px-0">
+          <%= image_tag image, :class => "w-100 image-preview", :alt => "pas de photo"%>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="mt-5 mb-2">
+          <%= raw(@image.description) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

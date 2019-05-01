@@ -37,27 +37,50 @@
       </div>
     </div>
 
-      <div class="row mx-auto">
-        <% @camera.images.each do |image| %>
-          <div class="col-12 col-sm-6 col-md-4 course-card">
-            <div class="course-listing mb-5">
-              <a href="<%= preview_cameras_path %>">
-                <div class="course-card-content col-md-12">
-                  <div class="course-box-image">
-                   <% if image.avatar.attached? %>
-                     <%= image_tag image.avatar.variant(resize: "400x400"), :class => "w-100 image-fluid course-image-card", :alt => "pas de photo"%>
-                   <% else %>
-                     <img class="w-100 image-fluid course-image-card" src="<%= asset_path 'default-camera-picture.png' %>" alt="pas de photo">
-                   <% end %>
-                 </div>
-                  <div class="course-listing-content pt-3">
-                    <a class="card-title text-center course-listing-title"><%= image.name %></a>
+    <div class="row mx-auto">
+      <% @camera.images.each do |image| %>
+        <div class="col-12 col-sm-6 col-md-4 course-card">
+          <div class="course-listing mb-5">
+            <a href="<%= preview_images_path %>">
+              <div class="course-card-content">
+                <div class="course-box-image">
+                 <% if image.avatar.attached? %>
+                   <%= image_tag image.avatar, :class => "w-100 image-fluid course-image-card", :alt => "pas de photo"%>
+                 <% else %>
+                   <img class="w-100 image-fluid course-image-card" src="<%= asset_path 'default-camera-picture.png' %>" alt="pas de photo">
+                 <% end %>
+               </div>
+                <div class="course-listing-content pt-3">
+                  <a class="card-title text-center course-listing-title"><%= image.name %></a>
+                  <div class="container">
+                    <%= form_tag charges_path do %>
+                      <div class="row mt-3">
+                        <article class="col-md-6">
+                          <% if flash[:error].present? %>
+                            <div id="error_explanation">
+                              <p><%= flash[:error] %></p>
+                            </div>
+                          <% end %>
+                          <label class="amount">
+                            <span>Amount: $5.00</span>
+                          </label>
+                        </article>
+
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button col-md-6"
+                                data-key="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>"
+                                data-description="A month's subscription"
+                                data-amount="500"
+                                data-locale="auto"></script>
+                      </div>
+                    <% end %>
+                    <input type="hidden" name="stripeToken" />
                   </div>
                 </div>
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

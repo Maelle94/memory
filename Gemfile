@@ -15,6 +15,8 @@ gem 'devise'
 
 gem 'font-awesome-sass', '~> 5.3.1'
 
+gem 'image_processing', '~> 1.2'
+
 gem 'jbuilder',     '2.7.0'
 
 gem 'jquery-rails', '4.3.1'
@@ -22,6 +24,8 @@ gem 'jquery-rails', '4.3.1'
 gem 'mini_magick'
 
 gem 'pg', '~> 0.21.0'
+
+gem 'pg_search'
 
 gem 'puma',         '3.9.1'
 

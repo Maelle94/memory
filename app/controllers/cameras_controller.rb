@@ -53,6 +53,7 @@ class CamerasController < ApplicationController
 
   def preview
     @categories = Category.all
+    @camera = @camera.search(params[:keywords]) if params[:keywords]
   end
 
   private

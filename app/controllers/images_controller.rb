@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :preview]
 
-  layout 'dashboard'
+  layout :change_layout
 
   # GET /images
   # GET /images.json
@@ -29,8 +29,8 @@ class ImagesController < ApplicationController
     @image = Image.new(image_params)
 
     if @image.save
-      @image.avatar.attach(params[:image][:avatar]) if params[:image][:avatar]
-      @image.avatar.attach(params[:image][:multi_images]) if params[:image][:multi_images]
+      # @image.avatar.attach(params[:image][:avatar]) if params[:image][:avatar]
+      # @image.avatar.attach(params[:image][:multi_images]) if params[:image][:multi_images]
       flash[:notice] = "L'image a été créée avec succès."
       redirect_to images_path
     else
@@ -52,6 +52,10 @@ class ImagesController < ApplicationController
     redirect_to images_path, notice: "L'image a été supprimée avec succès."
   end
 
+  def preview
+    @image = @image.search(params[:keywords]) if params[:keywords]
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
@@ -61,5 +65,13 @@ class ImagesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
       params.require(:image).permit(:name, :number_bands, :spectrum, :bandwidth, :year, :description, :avatar, :category_id, :amount, :camera_id, multi_images: [])
+    end
+
+    def change_layout
+      if %w[preview].include? action_name
+        'home'
+      else
+        'dashboard'
+      end
     end
 end

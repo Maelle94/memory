@@ -17,67 +17,53 @@
         <%= form.label :name, class: "col-sm-3 col-form-label" %>
         <%= form.text_field :name, class: "form-control col-sm-9" %>
       </div>
-    </div>
 
-    <div class="col-md-8 mx-auto mb-3">
       <div class="form-group row">
         <%= form.label :number_bands, class: "col-sm-3 col-form-label" %>
-        <%= form.text_field :number_bands, class: "form-control col-sm-9" %>
+        <%= form.number_field :number_bands, class: "form-control col-sm-9" %>
       </div>
-    </div>
 
-    <div class="col-md-8 mx-auto mb-3">
       <div class="form-group row">
         <%= form.label :number_channels, class: "col-sm-3 col-form-label" %>
-        <%= form.text_field :number_channels, class: "form-control col-sm-9" %>
+        <%= form.number_field :number_channels, class: "form-control col-sm-9" %>
       </div>
-    </div>
 
-    <div class="col-md-8 mx-auto mb-3">
       <div class="form-group row">
         <%= form.label :wave_length, class: "col-sm-3 col-form-label" %>
-        <%= form.text_field :wave_length, class: "form-control col-sm-9" %>
+        <%= form.number_field :wave_length, class: "form-control col-sm-9" %>
       </div>
-    </div>
 
-    <div class="col-md-8 mx-auto mb-3">
       <div class="form-group row">
         <%= form.label :dimension, class: "col-sm-3 col-form-label" %>
-        <%= form.text_field :dimension, class: "form-control col-sm-9" %>
+        <%= form.number_field :dimension, class: "form-control col-sm-9" %>
       </div>
-    </div>
 
-    <div class="col-md-8 mx-auto mb-3">
       <div class="form-group row">
         <%= form.label :bandwidth, class: "col-sm-3 col-form-label" %>
-        <%= form.text_field :bandwidth, class: "form-control col-sm-9" %>
+        <%= form.number_field :bandwidth, class: "form-control col-sm-9" %>
       </div>
-    </div>
 
-    <div class="col-md-8 mx-auto mb-3">
       <div class="form-group row">
         <%= form.label :year, class: "col-sm-3 col-form-label" %>
-        <%= form.text_field :year, class: "form-control col-sm-9" %>
+        <%= form.number_field :year, class: "form-control col-sm-9" %>
       </div>
-    </div>
 
-    <div class="col-md-8 mx-auto mb-3">
       <div class="form-group row">
         <%= form.label :description, class: "col-sm-3 col-form-label" %>
-        <div class="col-sm-9">
-          <%= form.text_field :description, class: "form-control", id: 'description' %>
+        <div class="col-sm-9 h-100">
+          <div id='description' data-description="input[name='camera[description]']">
+            <%= sanitize form.object.description %>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-8 mx-auto mb-3">
       <div class="form-group row">
         <%= form.label 'Image de la caméra', class: "col-sm-3 col-form-label" %>
         <div class="col-sm-6">
           <div class="card w-100">
             <div class="card-body">
               <% if camera.avatar.attached? %>
-                <%= image_tag avatar.variant(resize: "400x400"), class: 'img-fluid image-picture', alt: 'pas de photo' %>
+                <%= image_tag camera.avatar.variant(resize: "400x400"), class: 'img-fluid image-picture', alt: 'pas de photo' %>
               <% else %>
                 <img src="<%= asset_path 'default-camera-picture.png' %>" alt="background" class="image-picture img-fluid">
               <% end %>
@@ -89,9 +75,7 @@
           <%= form.file_field :avatar, class: 'picture inputfile', id: 'camera_picture' %>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-8 mx-auto">
       <div class="form-group row">
         <%= form.submit 'Enrégistrer', class: 'col-sm-9 ml-auto btn btn-primary btn-block' %>
       </div>
